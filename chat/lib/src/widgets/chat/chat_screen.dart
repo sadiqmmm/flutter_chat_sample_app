@@ -27,7 +27,7 @@ class ChatScreenState extends State<ChatScreen>
   final TextEditingController _textController = new TextEditingController();
 
   bool _isComposing = false;
-  int current_user_id;
+  int currentUserId;
   IOWebSocketChannel channel;
   ChatScreenPresenter _presenter;
   AppLifecycleState _lastLifecyleState;
@@ -43,7 +43,7 @@ class ChatScreenState extends State<ChatScreen>
     setState(() {
       for (var message in listMessage.messages) {
         _messages.add(new ChatMessage(
-          current_user_id: current_user_id,
+          currentUserId: currentUserId,
           message: message,
         ));
       }
@@ -112,7 +112,7 @@ class ChatScreenState extends State<ChatScreen>
   void setupChannel() {
     var db = new DatabaseHelper();
     db.getAuth().then((auth) {
-      current_user_id = auth.id;
+      currentUserId = auth.id;
       channel = new IOWebSocketChannel.connect(socketUrl, headers: {
         "UID": auth.uid,
         "ACCESS_TOKEN": auth.accessToken,
@@ -157,7 +157,7 @@ class ChatScreenState extends State<ChatScreen>
   }
 
   void onData(_data) {
-    var data = JSON.decode(_data);
+    var data = json.decode(_data);
     switch (data["type"]) {
       case "ping":
         break;
@@ -176,7 +176,7 @@ class ChatScreenState extends State<ChatScreen>
       var msg = Message.map(data["message"]["message"]);
 
       ChatMessage message = new ChatMessage(
-        current_user_id: current_user_id,
+        currentUserId: currentUserId,
         message: msg,
         animationController: new AnimationController(
           duration: new Duration(milliseconds: 700),

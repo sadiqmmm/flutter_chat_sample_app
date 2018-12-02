@@ -13,13 +13,13 @@ class ChatScreenPresenter {
   ChatScreenContract _view;
   RestDatasource api = new RestDatasource();
   ChatScreenPresenter(this._view);
-  int current_page = 0;
+  int currentPage = 0;
   loadMessages() {
-    print('Loading: ${current_page + 1}');
+    print('Loading: ${currentPage + 1}');
 
-    api.getMessages(current_page + 1).then((ListMessage messages) {
-      if (current_page < messages.total_pages) {
-        current_page++;
+    api.getMessages(currentPage + 1).then((ListMessage messages) {
+      if (currentPage < messages.totalPages) {
+        currentPage++;
       }
 
       updateBadger();

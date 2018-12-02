@@ -2,14 +2,14 @@ import 'package:chat/src/models/message.dart';
 import 'package:flutter/material.dart';
 
 class ChatMessage extends StatelessWidget {
-  ChatMessage({this.message, this.current_user_id, this.animationController});
+  ChatMessage({this.message, this.currentUserId, this.animationController});
   final Message message;
-  final int current_user_id;
+  final int currentUserId;
 
   final AnimationController animationController;
   @override
   Widget build(BuildContext context) {
-    if (current_user_id == message.user.id) {
+    if (currentUserId == message.user.id) {
       return _buildRight(context);
     } else {
       return _build(context);
@@ -30,7 +30,7 @@ class ChatMessage extends StatelessWidget {
             child: new Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
-                new Text(message.created_at.toString(),
+                new Text(message.createdAt.toString(),
                     style: Theme.of(context).textTheme.caption),
                 new Text(message.user.name,
                     style: Theme.of(context).textTheme.title),
@@ -64,7 +64,7 @@ class ChatMessage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.end,
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              new Text(message.created_at.toString(),
+              new Text(message.createdAt.toString(),
                   style: Theme.of(context).textTheme.caption),
               new Text(message.user.name,
                   style: Theme.of(context).textTheme.title),

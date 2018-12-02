@@ -99,7 +99,7 @@ class LoginScreenState extends State<LoginScreen>
                         ? "User name must have atleast 10 chars"
                         : null;
                   },
-                  decoration: new InputDecoration(labelText: "User name"),
+                  decoration: new InputDecoration(labelText: "Email"),
                 ),
               ),
               new Padding(

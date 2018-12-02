@@ -14,6 +14,7 @@ dependencies:
   firebase_messaging: ^2.1.0
   flutter_app_badger: ^1.0.2
   http: ^0.12.0
+  web_socket_channel: ^1.0.9
   # flutter_localstorage:
   #   git: git://github.com/lakexyde/flutter_localstorage.git
 dev_dependencies:
